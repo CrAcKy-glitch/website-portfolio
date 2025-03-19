@@ -126,7 +126,7 @@ export const Header = () => {
       }
     });
   }
-  console.log(brand);
+
   return (
     <div
       className={`relative mx-auto w-full max-w-7xl px-6 ${
@@ -174,10 +174,11 @@ export const Header = () => {
           </>
         ) : (
           <div>
-            AI-Powered Support <br className='sm:hidden' />
-            <span className='text-primary'>That Grows Your</span>{' '}
+            AI-Powered and <br className='sm:hidden' />
+            Voice Agentic Support
+            <span className='text-primary'> That Grows Your</span>{' '}
             <br className='sm:hidden' />
-            <span className='text-primary-500'>E-Commerce Business</span>
+            <span className='text-primary-500'> Business</span>
           </div>
         )}
       </motion.h1>
@@ -189,8 +190,8 @@ export const Header = () => {
         transition={{ duration: 0.8, delay: 0.5 }}
       >
         Elevate your sales with Ulai, the intelligent customer support assistant
-        that resolves inquiries 24/7, increases conversions, and enhances
-        customer satisfaction.
+        that resolves inquiries 24/7, Multilingual, increases conversions,
+        manages processes and Customer journey
       </motion.p>
 
       <motion.div

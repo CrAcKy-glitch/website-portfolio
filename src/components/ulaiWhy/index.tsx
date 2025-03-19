@@ -1,5 +1,7 @@
-import Button from '@/components/buttons/Button';
 import Image from 'next/image';
+
+import Button from '@/components/buttons/Button';
+
 import ulailogo from '@/assets/ulailogo.svg';
 
 export default function UlaiWhy() {

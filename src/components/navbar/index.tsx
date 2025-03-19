@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
+import Button from '@/components/buttons/Button';
+
 const transition = {
   type: 'spring',
   mass: 0.5,
@@ -191,7 +193,7 @@ export default function NavBar() {
                     />
                     <ProductItem
                       title='Voice Sales Agent'
-                      href='/product/salesagent'
+                      href='/product/voice-ops-agent'
                       src='https://assets.aceternity.com/demos/tailwindmasterkit.webp'
                       description='Talks to your consumers and markets your product'
                     />
@@ -216,9 +218,12 @@ export default function NavBar() {
               >
                 Contact
               </Link>
-              <button className='rounded-full bg-blue-500 px-6 py-2 text-white transition hover:bg-blue-600'>
+              <Button
+                login
+                className='rounded-full bg-blue-500 px-6 py-2 text-white transition hover:bg-blue-600'
+              >
                 Try for Free
-              </button>
+              </Button>
             </div>
           </div>
 

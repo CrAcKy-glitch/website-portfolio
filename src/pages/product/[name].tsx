@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MessageSquare, Search } from 'lucide-react';
+import { MessageSquare, PhoneCall, Search } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
@@ -124,6 +124,66 @@ const products = {
         period: '',
         features: [
           'Unlimited conversations',
+          'Dedicated account manager',
+          'Custom integration',
+          '24/7 premium support',
+        ],
+      },
+    ],
+  },
+  'voice-ops-agent': {
+    name: 'Voice Ops Agent',
+    title: 'AI-Powered Voice Assistant',
+    description:
+      'Our Voice Ops Agent handles customer calls, resolves inquiries, and provides real-time support 24/7 with natural-sounding conversations. Enhance your call center operations with AI that understands context, sentiment, and intent.',
+    icon: PhoneCall,
+    // background: voiceBackground,
+    color: 'blue-500',
+    features: [
+      'Natural voice conversations with advanced speech recognition',
+      'Seamless integration with existing phone systems and CRM platforms',
+      '24/7 availability without staffing concerns',
+      'Real-time sentiment analysis and emotion detection',
+      'Detects Sudden interruption',
+      'Multilingual support for global customer base',
+      'Pivots through topics and gets into details of nested topics',
+    ],
+    benefits: [
+      'Reduce call center costs by up to 60% while improving customer satisfaction',
+      'Eliminate wait times with instant response to every call',
+      'Increase first-call resolution rates with intelligent problem-solving',
+      'Gain valuable insights from call analytics and customer interactions',
+      'Scale customer support operations without proportional cost increases',
+    ],
+    pricing: [
+      {
+        name: 'Starter',
+        price: '$499',
+        period: 'per month',
+        features: [
+          'Up to 1,000 minutes per month',
+          'Basic call analytics',
+          'Email support',
+          'Standard voice quality',
+        ],
+      },
+      {
+        name: 'Business',
+        price: '$1,299',
+        period: 'per month',
+        features: [
+          'Up to 10,000 minutes per month',
+          'Advanced call analytics',
+          'Priority support',
+          'Premium voice quality',
+        ],
+      },
+      {
+        name: 'Enterprise',
+        price: 'Custom',
+        period: '',
+        features: [
+          'Unlimited minutes',
           'Dedicated account manager',
           'Custom integration',
           '24/7 premium support',
@@ -377,6 +437,110 @@ export default function ProductPage() {
                         </div>
                       </motion.div>
                     </div>
+                  </div>
+                </div>
+              )}
+              {router.query.name === 'voice-ops-agent' && (
+                <div className='relative overflow-hidden rounded-xl border border-gray-800 bg-gray-900'>
+                  <div className='relative z-10 flex items-center gap-2 border-b border-gray-800 bg-gray-800 p-4'>
+                    <IconComponent className='h-5 w-5 text-blue-500' />
+                    <span className='flex flex-row items-center font-medium'>
+                      {product.name} by{'  '}
+                      <Image
+                        src={ulaiLogo || '/placeholder.svg'}
+                        alt='image '
+                        width={40}
+                        height={40}
+                        className='my-auto ml-2'
+                      />
+                    </span>
+                  </div>
+                  <div className='relative z-10 space-y-4 p-6'>
+                    {/* Message 1 */}
+                    <motion.div
+                      className='flex justify-end gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={0}
+                    >
+                      <div className='max-w-[80%] rounded-lg border border-blue-600 bg-blue-600/20 p-3'>
+                        <p className='text-sm'>
+                          "Hello, I'd like to check the status of my recent
+                          order #45678."
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Message 2 */}
+                    <motion.div
+                      className='flex gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={1}
+                    >
+                      <div className='h-4 w-4 flex-shrink-0 rounded-full bg-gray-800' />
+                      <div className='max-w-[80%] rounded-lg bg-gray-800 p-3'>
+                        <p className='text-sm'>
+                          "Hello! I found your order #45678. It's currently out
+                          for delivery and should arrive today between 2-4 PM.
+                          Would you like me to send you a tracking link via
+                          email or SMS?"
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Message 3 */}
+                    <motion.div
+                      className='flex justify-end gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={2}
+                    >
+                      <div className='max-w-[80%] rounded-lg border border-blue-600 bg-blue-600/20 p-3'>
+                        <p className='text-sm'>
+                          "Email would be great. Also, can you tell me about
+                          your return policy for this item?"
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Message 4 */}
+                    <motion.div
+                      className='flex gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={3}
+                    >
+                      <div className='h-4 w-4 flex-shrink-0 rounded-full bg-gray-800' />
+                      <div className='max-w-[80%] rounded-lg bg-gray-800 p-3'>
+                        <p className='text-sm'>
+                          "I've sent the tracking link to your email. Regarding
+                          our return policy, you have 30 days to return this
+                          item for a full refund. Would you like me to send you
+                          the detailed return instructions as well?"
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Voice Call Status */}
+                    <motion.div
+                      className='flex justify-center'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={4}
+                    >
+                      <div className='flex items-center gap-2 rounded-full bg-gray-800 px-4 py-2'>
+                        <span className='h-2 w-2 animate-pulse rounded-full bg-blue-500'></span>
+                        <span className='text-sm text-gray-400'>
+                          AI Voice Assistant Active
+                        </span>
+                      </div>
+                    </motion.div>
                   </div>
                 </div>
               )}
