@@ -212,7 +212,7 @@ export default function ProductPage() {
   const IconComponent = product.icon;
 
   return (
-    <div className='mt-32 text-white'>
+    <div className='mt-5 text-white'>
       {/* Breadcrumb */}
 
       {/* Hero Section */}

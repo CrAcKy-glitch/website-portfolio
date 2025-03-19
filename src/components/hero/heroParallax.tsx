@@ -62,7 +62,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className='relative top-0 flex h-[300vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]'
+      className='relative top-0 flex h-[250vh] flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] md:h-[300vh]'
     >
       <Header />
 
@@ -92,20 +92,11 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className='mb-20 flex  flex-row space-x-20 '>
+        <motion.div className='mb-20 flex flex-row space-x-20 '>
           {secondRow.map((product) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
-              key={product.title}
-            />
-          ))}
-        </motion.div>
-        <motion.div className='flex flex-row-reverse space-x-20 space-x-reverse'>
-          {thirdRow.map((product) => (
-            <ProductCard
-              product={product}
-              translate={translateX}
               key={product.title}
             />
           ))}
@@ -129,12 +120,12 @@ export const Header = () => {
 
   return (
     <div
-      className={`relative mx-auto w-full max-w-7xl px-6 ${
-        brandIcon ? '-mt-3 py-0 md:-mt-24' : 'py-20'
+      className={`relative mx-auto -mt-3 w-full max-w-7xl px-6 md:mt-0 ${
+        brandIcon ? ' py-0 md:-mt-24' : 'py-20'
       } md:py-24`}
     >
       <motion.h1
-        className='max-w-[800px] text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl'
+        className='max-w-[800px] text-3xl font-bold tracking-tight  text-white md:text-5xl lg:text-6xl'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -173,9 +164,9 @@ export const Header = () => {
             </div>
           </>
         ) : (
-          <div>
+          <div className=''>
             AI-Powered and <br className='sm:hidden' />
-            Voice Agentic Support
+            Voice Agentic Infrastructure
             <span className='text-primary'> That Grows Your</span>{' '}
             <br className='sm:hidden' />
             <span className='text-primary-500'> Business</span>
@@ -184,7 +175,7 @@ export const Header = () => {
       </motion.h1>
 
       <motion.p
-        className='mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-300 md:text-xl'
+        className='mt-4 max-w-2xl text-base text-gray-300 md:text-xl'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
@@ -237,19 +228,19 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className='group/product relative h-96 w-[30rem] flex-shrink-0'
+      className='group/product relative h-52 w-52 flex-shrink-0  md:h-96 md:w-[30rem]'
     >
       <div className='block group-hover/product:shadow-2xl '>
         <Image
           src={product.thumbnail}
           height='600'
           width='600'
-          className='absolute inset-0 h-full w-full '
+          className='absolute inset-0 h-52 w-52 md:h-full md:w-full'
           alt={product.title}
         />
       </div>
-      <div className='pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-80'></div>
-      <h2 className='absolute bottom-4 left-4 text-white opacity-0 group-hover/product:opacity-100'>
+      <div className='pointer-events-none absolute inset-0 h-52 w-52 bg-black opacity-0 group-hover/product:opacity-80 md:h-full md:w-full'></div>
+      <h2 className='absolute bottom-4 left-4  text-white opacity-0 group-hover/product:opacity-100'>
         {product.title}
       </h2>
     </motion.div>

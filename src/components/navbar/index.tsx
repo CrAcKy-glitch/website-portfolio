@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Hamburger from 'hamburger-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -20,17 +21,22 @@ export const MenuItem = ({
   active,
   item,
   children,
+  mobile,
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+  mobile?: boolean;
 }) => {
   return (
-    <div onMouseEnter={() => setActive(item)} className='relative '>
+    <div
+      onMouseEnter={() => setActive(item)}
+      className={`relative ${mobile ? 'max-w-[30px]' : ''} `}
+    >
       <motion.p
         transition={{ duration: 0.3 }}
-        className='cursor-pointer text-black hover:opacity-[0.9] dark:text-white'
+        className='cursor-pointer  text-white hover:opacity-[0.9]'
       >
         {item}
       </motion.p>
@@ -45,7 +51,7 @@ export const MenuItem = ({
               <motion.div
                 transition={transition}
                 layoutId='active' // layoutId ensures smooth animation
-                className='overflow-hidden rounded-2xl border border-black/[0.2] bg-white shadow-xl backdrop-blur-sm dark:border-white/[0.2] dark:bg-black'
+                className='overflow-hidden rounded-2xl border border-white/[0.2] bg-black shadow-xl backdrop-blur-sm'
               >
                 <motion.div
                   layout // layout ensures smooth animation
@@ -67,26 +73,36 @@ export const ProductItem = ({
   description,
   href,
   src,
+  mobile,
 }: {
   title: string;
   description: string;
   href: string;
   src: string;
+  mobile?: boolean;
 }) => {
   return (
-    <Link href={href} className='flex space-x-2'>
+    <Link href={href} className={mobile ? 'flex space-x-1' : 'flex space-x-2'}>
       <Image
         src={src}
-        width={140}
-        height={70}
+        width={mobile ? 50 : 140}
+        height={mobile ? 25 : 70}
         alt={title}
         className='shrink-0 rounded-md shadow-2xl'
       />
       <div>
-        <h4 className='mb-1 text-xl font-bold text-black dark:text-white'>
+        <h4
+          className={`mb-1 ${
+            mobile ? 'text-sm' : 'text-xl'
+          } font-bold text-white`}
+        >
           {title}
         </h4>
-        <p className='max-w-[10rem] text-sm text-neutral-700 dark:text-neutral-300'>
+        <p
+          className={`max-w-[10rem] ${
+            mobile ? 'text-[8px]' : 'text-sm'
+          } text-sm text-neutral-300`}
+        >
           {description}
         </p>
       </div>
@@ -96,10 +112,7 @@ export const ProductItem = ({
 
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
-    <Link
-      {...rest}
-      className='text-neutral-700 hover:text-black dark:text-neutral-200 '
-    >
+    <Link {...rest} className=' text-neutral-200 hover:text-black '>
       {children}
     </Link>
   );
@@ -109,6 +122,7 @@ export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  const [mobileActive, setMobileActive] = useState<string | null>(null);
   // Add scroll event listener to track scroll position
   useEffect(() => {
     const handleScroll = () => {
@@ -241,17 +255,10 @@ export default function NavBar() {
 
           {/* Mobile menu button */}
           <div className='flex md:hidden'>
-            <button
-              type='button'
-              className={`inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${
-                isScrolled ? 'hover:bg-gray-700' : 'hover:bg-black/30'
-              }`}
-              aria-controls='mobile-menu'
-              aria-expanded='false'
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <span className='sr-only'>Open main menu</span>
-            </button>
+            <Hamburger
+              color='white'
+              onToggle={() => setIsMenuOpen(!isMenuOpen)}
+            />
           </div>
         </div>
       </div>
@@ -268,13 +275,48 @@ export default function NavBar() {
             href='#'
             className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
           >
-            Features
+            Solutions
           </Link>
           <Link
             href='#'
             className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
           >
-            Pricing
+            <MenuItem
+              setActive={setMobileActive}
+              active={mobileActive}
+              item='Products'
+            >
+              <div className='max-w-20  grid grid-cols-2 gap-10 p-4 text-sm'>
+                <ProductItem
+                  mobile
+                  title='AsKii'
+                  href='/product/askii'
+                  src='https://assets.aceternity.com/demos/algochurn.webp'
+                  description='Your website product personalization'
+                />
+                <ProductItem
+                  mobile
+                  title='Voice Sales Agent'
+                  href='/product/voice-ops-agent'
+                  src='https://assets.aceternity.com/demos/tailwindmasterkit.webp'
+                  description='Talks to your consumers and markets your product'
+                />
+                <ProductItem
+                  mobile
+                  title='E-Commerce AI Assistant'
+                  href='/product/ecomAssistant'
+                  src='https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png'
+                  description='Never write from scratch again. Go from idea to blog in minutes.'
+                />
+                <ProductItem
+                  mobile
+                  title='WhatsApp Shopping'
+                  href='/product/whatsapp-agent'
+                  src='https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png'
+                  description='Respond to government RFPs, RFIs and RFQs 10x faster using AI'
+                />
+              </div>
+            </MenuItem>
           </Link>
           <Link
             href='#'
