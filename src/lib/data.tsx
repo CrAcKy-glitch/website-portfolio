@@ -2,7 +2,7 @@ import { FaBicycle, FaBus, FaCar } from 'react-icons/fa';
 
 import aabosc from '../assets/images/hero/aabosc.png';
 import adukalesc from '../assets/images/hero/adukalesc.png';
-import bigCom from '../assets/images/hero/bigCom.png';
+import bigCom from '../assets/images/hero/bigcom.png';
 import ecobhoo from '../assets/images/hero/ecobhoosc.png';
 import evlogia from '../assets/images/hero/evlogiasc.png';
 import shopify from '../assets/images/hero/shopify.png';
