@@ -120,19 +120,19 @@ export const Header = () => {
 
   return (
     <div
-      className={`relative mx-auto -mt-3 w-full max-w-7xl px-6 md:mt-0 ${
+      className={`relative mx-auto w-full max-w-7xl px-6 md:mt-0 ${
         brandIcon ? ' py-0 md:-mt-24' : 'py-20'
       } md:py-24`}
     >
       <motion.h1
-        className='max-w-[800px] text-3xl font-bold tracking-tight  text-white md:text-5xl lg:text-6xl'
+        className=' -mt-20 max-w-[800px] text-3xl font-bold tracking-tight text-white md:mt-0 md:text-5xl lg:text-6xl'
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
       >
         {brandIcon && brand ? (
           <>
-            <div className='flex flex-row items-center opacity-100'>
+            <div className='-mt-10 flex flex-row items-center opacity-100'>
               <Image
                 src={brandIcon}
                 alt={brand}

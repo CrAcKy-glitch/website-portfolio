@@ -30,10 +30,7 @@ export const MenuItem = ({
   mobile?: boolean;
 }) => {
   return (
-    <div
-      onMouseEnter={() => setActive(item)}
-      className={`relative ${mobile ? 'max-w-[30px]' : ''} `}
-    >
+    <div onMouseEnter={() => setActive(item)} className='relative'>
       <motion.p
         transition={{ duration: 0.3 }}
         className='cursor-pointer  text-white hover:opacity-[0.9]'
@@ -55,7 +52,9 @@ export const MenuItem = ({
               >
                 <motion.div
                   layout // layout ensures smooth animation
-                  className='h-full w-max p-4'
+                  className={
+                    mobile ? 'h-[300px] w-[300px]' : 'h-full w-max p-4'
+                  }
                 >
                   {children}
                 </motion.div>
@@ -83,13 +82,15 @@ export const ProductItem = ({
 }) => {
   return (
     <Link href={href} className={mobile ? 'flex space-x-1' : 'flex space-x-2'}>
-      <Image
-        src={src}
-        width={mobile ? 50 : 140}
-        height={mobile ? 25 : 70}
-        alt={title}
-        className='shrink-0 rounded-md shadow-2xl'
-      />
+      {!mobile && (
+        <Image
+          src={src}
+          width={mobile ? 50 : 140}
+          height={mobile ? 25 : 70}
+          alt={title}
+          className='shrink-0 rounded-md shadow-2xl'
+        />
+      )}
       <div>
         <h4
           className={`mb-1 ${
@@ -282,11 +283,12 @@ export default function NavBar() {
             className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
           >
             <MenuItem
+              mobile
               setActive={setMobileActive}
               active={mobileActive}
               item='Products'
             >
-              <div className='max-w-20  grid grid-cols-2 gap-10 p-4 text-sm'>
+              <div className='grid grid-cols-2 gap-10 p-4 text-sm'>
                 <ProductItem
                   mobile
                   title='AsKii'
