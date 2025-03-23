@@ -54,14 +54,6 @@ export default function Contact() {
                   <p className='text-gray-600'>admin@ulai.in</p>
                 </div>
               </div>
-
-              <div className='flex items-start'>
-                <Phone className='text-primary mr-3 mt-1 h-5 w-5' />
-                <div>
-                  <h3 className='font-medium'>Call Us</h3>
-                  <p className='text-gray-600'>+91 98451 78656</p>
-                </div>
-              </div>
             </div>
           </div>
 

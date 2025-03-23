@@ -56,7 +56,7 @@ export default function UlaiDiscovery() {
           </div>
           <div className='flex flex-row items-center'>
             <h2 className='mb-4 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-4xl font-bold text-transparent md:text-5xl'>
-              AI-Powered Product Discovery
+              RAG bot Product Discovery
             </h2>
           </div>
           <p className='max-w-2xl text-lg text-gray-400'>
@@ -121,7 +121,7 @@ export default function UlaiDiscovery() {
               {/* Header */}
               <div className='flex items-center gap-3 border-b border-gray-800 bg-gray-900 p-4'>
                 <Image src={ulai} alt='ulai' height={40} width={40} />
-                <span className='font-medium text-green-400'>AI Assistant</span>
+                <span className='font-medium text-green-400'>RAG Chatbot</span>
               </div>
 
               {/* Chat Messages */}

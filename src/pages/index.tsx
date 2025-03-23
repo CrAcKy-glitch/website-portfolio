@@ -8,6 +8,7 @@ import UlaiDiscovery from '@/components/ulaiDiscovery';
 import UlaiIntro from '@/components/ulaiIntro';
 import UlaiProducts from '@/components/ulaiProducts';
 import { UlaiStats } from '@/components/ulaiStats';
+import UlaiVoice from '@/components/ulaiVoice';
 import UlaiWhy from '@/components/ulaiWhy';
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <UlaiStats />
         <UlaiDiscovery />
         <UlaiAfterSales />
+        <UlaiVoice />
         <UlaiAnalytics />
         <UlaiCampaign />
         <BrandCarousel />

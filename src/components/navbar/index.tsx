@@ -7,6 +7,11 @@ import React, { useEffect, useState } from 'react';
 
 import Button from '@/components/buttons/Button';
 
+import askii from '@/assets/askii.webp';
+import ulai from '@/assets/ulai.webp';
+import voice from '@/assets/voice.webp';
+import whatsapp from '@/assets/whatsapp.webp';
+
 const transition = {
   type: 'spring',
   mass: 0.5,
@@ -77,7 +82,7 @@ export const ProductItem = ({
   title: string;
   description: string;
   href: string;
-  src: string;
+  src: any;
   mobile?: boolean;
 }) => {
   return (
@@ -203,25 +208,25 @@ export default function NavBar() {
                     <ProductItem
                       title='AsKii'
                       href='/product/askii'
-                      src='https://assets.aceternity.com/demos/algochurn.webp'
+                      src={askii}
                       description='Your website product personalization'
                     />
                     <ProductItem
                       title='Voice Sales Agent'
                       href='/product/voice-ops-agent'
-                      src='https://assets.aceternity.com/demos/tailwindmasterkit.webp'
+                      src={voice}
                       description='Talks to your consumers and markets your product'
                     />
                     <ProductItem
                       title='E-Commerce AI Assistant'
                       href='/product/ecomAssistant'
-                      src='https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png'
+                      src={ulai}
                       description='Never write from scratch again. Go from idea to blog in minutes.'
                     />
                     <ProductItem
                       title='WhatsApp Shopping'
                       href='/product/whatsapp-agent'
-                      src='https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png'
+                      src={whatsapp}
                       description='Respond to government RFPs, RFIs and RFQs 10x faster using AI'
                     />
                   </div>

@@ -22,19 +22,23 @@ export default function UlaiIntro() {
               From
               <span className='font-medium text-green-400'>
                 {' '}
-                intelligent product discovery
+                Multilingual Support
               </span>{' '}
               to
               <span className='font-medium text-green-400'>
                 {' '}
-                automated customer engagement
+                Automated Support
               </span>
               , we empower e-commerce brands to scale effortlessly.
             </p>
             <ul className='space-y-2 text-sm text-gray-300 sm:text-base'>
               <li>✅ AI-driven customer interactions</li>
               <li>✅ Smart automation for better conversions</li>
-              <li>✅ Seamless omnichannel support</li>
+              <li>✅ Cultural Adaptation</li>
+              <li>
+                ✅ Handle multiple customer inquiries with AI-powered
+                conversations 24/7.
+              </li>
             </ul>
             <div className='mt-6'>
               <Button
@@ -92,8 +96,8 @@ export default function UlaiIntro() {
             Ulai is the purpose-built generative AI platform for marketing.
             Built on a foundation of enterprise trust, Ulai deeply understands
             marketing, delivering advanced brand control and an intuitive AI
-            toolkit that allows marketers to build apps and workflows to
-            accelerate their success.
+            toolkit that allows marketers to run their business using ulai voice
+            and AI based text assistant.
           </p>
           <div className='mt-6'>
             <Button

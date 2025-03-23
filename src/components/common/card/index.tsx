@@ -118,7 +118,7 @@ export const CredCard = ({
 }: CredCardProps) => {
   return (
     <div
-      className={` h-[500px] w-[400px] rounded-lg border-2 border-gray-600 text-center ${background} relative overflow-hidden`}
+      className={` h-[450px] w-[350px] rounded-lg border-2 border-gray-600 text-center ${background} relative overflow-hidden`}
     >
       {backgroundPicture && (
         <div className='absolute inset-0 z-0'>
@@ -127,12 +127,13 @@ export const CredCard = ({
             alt='Background'
             style={{ objectFit: 'cover' }}
             priority
+            fill
           />
         </div>
       )}
 
       {/* Content with z-index to appear above the background */}
-      <div className='relative z-10 flex h-full flex-col items-center justify-center p-4'>
+      <div className='relative z-10  flex h-full flex-col items-center justify-center p-4'>
         <div className='text-5xl font-bold'>{heading}</div>
         <div className='text-md mt-6'>{body}</div>
         <Button

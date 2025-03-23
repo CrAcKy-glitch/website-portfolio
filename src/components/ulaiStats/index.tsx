@@ -16,27 +16,27 @@ export function UlaiStats() {
     {
       quote:
         'We can be way more creative in what we’re putting out into the world.',
-      author: 'Santosh Patil',
-      role: 'CoFounder CTO',
-      company: 'CloudBees',
+      author: 'Shantala',
+      role: 'CoFounder',
+      company: 'Gamatics India',
       color: 'bg-gray-700',
     },
     {
-      title: '3,000+',
-      subtitle: 'hours saved in content creation time',
-      company: 'WalkMe',
+      title: '45%',
+      subtitle: 'less abadoned cart',
+
       color: 'bg-purple-500',
     },
     {
-      title: '800%',
+      title: '200%',
       subtitle: 'surge in web traffic',
       company: 'Bestplaces',
       color: 'bg-pink-500',
     },
     {
       title: '40%',
-      subtitle: 'increase in traffic using Ulai to produce better blog content',
-      company: 'Bloomreach',
+      subtitle: 'increase in customer conversions with ulai',
+
       color: 'bg-blue-400',
     },
     {
@@ -80,10 +80,10 @@ export function UlaiStats() {
           </div>
           <Image
             src={ulaiPhone}
-            width={300}
-            height={200}
+            width={250}
+            height={400}
             alt='Checkout UI with AI-powered upsells'
-            className='absolute -bottom-32 -right-4 rounded-2xl object-contain grayscale filter lg:-right-[10%]'
+            className='absolute bottom-5 right-4 hidden rounded-2xl object-contain hover:grayscale-0 md:block lg:grayscale'
           />
         </WobbleCard>
         <WobbleCard containerClassName='col-span-1 min-h-[300px] border-gray-800 bg-gray-900'>
@@ -94,7 +94,7 @@ export function UlaiStats() {
           <p className='mt-4 max-w-[26rem] text-left text-base/6 text-neutral-200'>
             By implementing Ulai's personalized communication strategies,
             businesses have observed a significant improvement in customer
-            retention rates. Optimizing the checkout process can lead to a 35%
+            retention rates. Optimizing the checkout process can lead to a 40%
             increase in conversion rates.
           </p>
         </WobbleCard>
@@ -113,7 +113,7 @@ export function UlaiStats() {
             width={500}
             height={500}
             alt='AI-powered checkout UI'
-            className='absolute -bottom-10 -right-10 rounded-2xl object-contain md:-right-[40%] lg:-right-[20%]'
+            className='absolute  bottom-10 right-5 hidden rounded-2xl object-contain hover:grayscale-0 md:block lg:grayscale '
           />
         </WobbleCard>
       </div>
@@ -128,23 +128,27 @@ export function UlaiStats() {
                 Real Marketers, Surreal Results
               </h2>
               <p className='mb-8 max-w-2xl text-lg text-gray-400'>
-                Thrive alongside other members of strong Ulai community as you
-                journey towards AI success.
+                Our Customer testimonials benefitting from cutting edge tech
+                designed to upscale your buisness.
               </p>
 
               {/* Stats Row */}
               <div className='mb-8 flex gap-8 text-white'>
                 <div className='border-r border-gray-700 pr-8'>
-                  <p className='text-2xl font-bold'>44</p>
+                  <p className='text-2xl font-bold'>1K+</p>
                   <p className='text-gray-400'>
-                    new articles published
+                    traffic
                     <br />
-                    in record time [5/week]
+                    increased conversions
                   </p>
                 </div>
                 <div>
                   <p className='text-2xl font-bold'>10,000+</p>
-                  <p className='text-gray-400'>hours saved</p>
+                  <p className='text-gray-400'>
+                    hours saved
+                    <br />
+                    of traditional Customer Support and Sales
+                  </p>
                 </div>
               </div>
 

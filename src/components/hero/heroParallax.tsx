@@ -108,7 +108,7 @@ export const HeroParallax = ({
 
 export const Header = () => {
   const paramKey = useSearchParams();
-  const brand = paramKey.get('brand');
+  const brand = paramKey.get('utm_source');
   let brandIcon: any = '';
   if (brand) {
     companyData.map((company) => {
@@ -165,7 +165,7 @@ export const Header = () => {
           </>
         ) : (
           <div className=''>
-            AI-Powered and <br className='sm:hidden' />
+            AI-Powered text and <br className='sm:hidden' />
             Voice Agentic Infrastructure
             <span className='text-primary'> That Grows Your</span>{' '}
             <br className='sm:hidden' />
@@ -180,9 +180,10 @@ export const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
       >
-        Elevate your sales with Ulai, the intelligent customer support assistant
-        that resolves inquiries 24/7, Multilingual, increases conversions,
-        manages processes and Customer journey
+        Boost your sales with Ulai, the intelligent customer support assistant
+        that operates 24/7, resolves inquiries instantly, supports multiple
+        languages, enhances conversions, and streamlines customer journey
+        management.
       </motion.p>
 
       <motion.div
