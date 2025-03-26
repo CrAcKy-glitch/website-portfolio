@@ -1,11 +1,12 @@
 import { CredCard } from '@/components/common/card';
-import console from '@/assets/console.png';
+
 import askii from '@/assets/askii.webp';
+import console from '@/assets/console.png';
 import walle from '@/assets/walle.webp';
 
 export default function UlaiProducts() {
   return (
-    <div className='mt-20'>
+    <div className='mt-20' id='features'>
       <h1 className='text-center'>Features</h1>
       <div className='  flex flex-col items-center justify-center space-y-3 py-5 text-center md:space-x-3 lg:flex-row'>
         <CredCard

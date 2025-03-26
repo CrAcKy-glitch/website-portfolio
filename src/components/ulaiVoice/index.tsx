@@ -43,7 +43,7 @@ export default function UlaiVoice() {
   };
 
   return (
-    <section className=' py-3'>
+    <section className='py-3' id='voice'>
       <div className='container mx-auto px-4'>
         {/* Section Header */}
         <div className='mb-16 text-center'>
@@ -225,12 +225,13 @@ export default function UlaiVoice() {
               className='flex flex-wrap gap-4'
             >
               <Link href='/product/voice-ops-agent'>
-                <Button className='border-none bg-blue-600 p-4 hover:bg-blue-700'>
+                <Button className='border-none bg-green-600 p-4 hover:bg-green-700'>
                   Learn More
                 </Button>
               </Link>
               <Button
                 variant='outline'
+                demo
                 className='border-white p-4 text-white hover:bg-white/10'
               >
                 Request Demo
@@ -255,7 +256,7 @@ export default function UlaiVoice() {
               viewport={{ once: true }}
               className='text-center'
             >
-              <h3 className='mb-2 text-4xl font-bold text-blue-400'>
+              <h3 className='mb-2 text-4xl font-bold text-green-400'>
                 {stat.value}
               </h3>
               <p className='text-gray-400'>{stat.label}</p>
@@ -271,7 +272,7 @@ export default function UlaiVoice() {
           viewport={{ once: true }}
           className='mt-24 text-center'
         >
-          <div className='mx-auto max-w-4xl rounded-2xl border border-blue-800/50 bg-gradient-to-r from-blue-900/40 to-green-900/40 p-12'>
+          <div className='mx-auto max-w-4xl rounded-2xl border border-green-800/50 bg-green-900/40  p-12'>
             <h3 className='mb-4 text-3xl font-bold'>
               Ready to transform your voice operations?
             </h3>
@@ -281,7 +282,7 @@ export default function UlaiVoice() {
             </p>
             <div className='flex flex-col justify-center gap-4 sm:flex-row'>
               <Link href='/product/voice-ops-agent'>
-                <Button className='w-full border-none bg-blue-600 p-4 hover:bg-blue-700 sm:w-auto'>
+                <Button className='w-full border-none bg-green-600 p-4 hover:bg-green-700 sm:w-auto'>
                   Get Started
                 </Button>
               </Link>

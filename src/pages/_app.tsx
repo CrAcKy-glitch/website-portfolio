@@ -14,7 +14,7 @@ import UlaiFooter from '@/components/ulaiFooter';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className='overflow-x-hidden bg-black'>
+    <div className='overflow-x-hidden scroll-smooth bg-black'>
       <NavBar />
       <Component {...pageProps} />
       <UlaiFooter />

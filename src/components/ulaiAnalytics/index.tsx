@@ -6,7 +6,7 @@ import Button from '@/components/buttons/Button';
 import dashboard from '@/assets/dashboard.png';
 export default function UlaiAnalytics() {
   return (
-    <div className=' min-h-screen text-gray-100'>
+    <div className='min-h-screen text-gray-100' id='analytics'>
       <main>
         <section className='container mx-auto px-4 py-24'>
           <div className='grid items-center gap-12 md:grid-cols-2'>
@@ -70,13 +70,14 @@ export default function UlaiAnalytics() {
 const features = [
   {
     icon: <BarChart3 className='h-5 w-5' />,
-    title: 'AI dashboard with revenue, retention, CSAT, AOV & CAC tracking',
+    title:
+      'AI dashboard with revenue, retention, CSAT, AOV & Abandoned Cart tracking',
     description:
       'Monitor all your critical business metrics in one place with real-time updates.',
   },
   {
     icon: <LineChart className='h-5 w-5' />,
-    title: 'Automated reports on cart abandonment, RTO, and conversion rates',
+    title: 'Automated reports on cart abandonment, and conversion rates',
     description:
       'Get actionable insights delivered automatically to help optimize your business.',
   },

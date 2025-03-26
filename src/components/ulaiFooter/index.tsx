@@ -3,6 +3,21 @@ import Image from 'next/image';
 import ulaiLogo from '@/assets/ulailogo.svg';
 
 export default function UlaiFooter() {
+  const col1 = [
+    { name: 'Customer Stories', href: '#stories' },
+
+    { name: 'Appreciation', href: '#stories' },
+  ];
+  const col2 = [
+    { name: 'Careers', href: 'https://in.linkedin.com/company/ulai/jobs' },
+    { name: 'Partnerships', href: '#partners' },
+    { name: 'Contact Us', href: '/contact' },
+  ];
+  const col3 = [
+    { name: 'Data Policy', href: '/dataPolicy' },
+    { name: 'Privacy Policy', href: '/privacyPolicy' },
+    { name: 'Terms & Conditions', href: '/serviceTerms' },
+  ];
   return (
     <footer className='border-t border-gray-800 bg-black'>
       <div className='mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8'>
@@ -26,18 +41,16 @@ export default function UlaiFooter() {
           <div className='space-y-3'>
             <h3 className='mb-2 text-sm font-medium text-gray-300'>Resource</h3>
             <ul className='space-y-2'>
-              {['Customer Stories', 'Case Studies', 'Appreciation', 'Blog'].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href='#'
-                      className='text-sm text-gray-400 transition-colors hover:text-green-400'
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {col1.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className='text-sm text-gray-400 transition-colors hover:text-green-400'
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -45,13 +58,13 @@ export default function UlaiFooter() {
           <div className='space-y-3'>
             <h3 className='mb-2 text-sm font-medium text-gray-300'>Company</h3>
             <ul className='space-y-2'>
-              {['Careers', 'News', 'Partnerships', 'Contact Us'].map((item) => (
-                <li key={item}>
+              {col2.map((item) => (
+                <li key={item.name}>
                   <a
-                    href='#'
+                    href={item.href}
                     className='text-sm text-gray-400 transition-colors hover:text-green-400'
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
@@ -62,18 +75,16 @@ export default function UlaiFooter() {
           <div className='space-y-3'>
             <h3 className='mb-2 text-sm font-medium text-gray-300'>Policies</h3>
             <ul className='space-y-2'>
-              {['Data Policy', 'Privacy Policy', 'Terms & Conditions'].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href='#'
-                      className='text-sm text-gray-400 transition-colors hover:text-green-400'
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {col3.map((item) => (
+                <li key={item.name}>
+                  <a
+                    href={item.href}
+                    className='text-sm text-gray-400 transition-colors hover:text-green-400'
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -84,7 +95,8 @@ export default function UlaiFooter() {
         {/* Bottom Row */}
         <div className='mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-between'>
           <p className='order-last text-sm text-gray-500 sm:order-first'>
-            &copy; {new Date().getFullYear()} ULAI. All rights reserved.
+            &copy; {new Date().getFullYear()} Sashakti Ventures Pvt. Ltd.. All
+            rights reserved.
           </p>
 
           <div className='flex space-x-6'>

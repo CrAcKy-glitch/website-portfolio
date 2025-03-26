@@ -27,7 +27,7 @@ export default function UlaiIntro() {
               to
               <span className='font-medium text-green-400'>
                 {' '}
-                Automated Support
+                Automated Voice Support 24x7
               </span>
               , we empower e-commerce brands to scale effortlessly.
             </p>

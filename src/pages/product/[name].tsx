@@ -1,7 +1,10 @@
+'use client';
+
 import { motion } from 'framer-motion';
-import { MessageSquare, PhoneCall, Search } from 'lucide-react';
+import { Database, MessageSquare, PhoneCall, Search } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useRef, useState } from 'react';
 
 import Button from '@/components/buttons/Button';
 
@@ -9,6 +12,7 @@ import smileTile from '@/assets/images/smile.svg';
 import leatherCaseProduct from '@/assets/products/leatherCase.svg';
 import ruggedCaseProduct from '@/assets/products/protectionCase.svg';
 import ulaiLogo from '@/assets/ulailogo.svg';
+import ulaiDemo from '@/assets/ulaiPresentation.mov';
 import whatsappBackground from '@/assets/whatsapp-bg.png';
 
 // Product data
@@ -95,41 +99,6 @@ const products = {
       'Scale customer service without increasing headcount',
       'Improve customer satisfaction with instant, 24/7 support',
     ],
-    pricing: [
-      {
-        name: 'Starter',
-        price: '$399',
-        period: 'per month',
-        features: [
-          'Up to 1,000 conversations per month',
-          'Basic analytics',
-          'Email support',
-          'Standard response time',
-        ],
-      },
-      {
-        name: 'Business',
-        price: '$999',
-        period: 'per month',
-        features: [
-          'Up to 10,000 conversations per month',
-          'Advanced analytics',
-          'Priority support',
-          'Custom training',
-        ],
-      },
-      {
-        name: 'Enterprise',
-        price: 'Custom',
-        period: '',
-        features: [
-          'Unlimited conversations',
-          'Dedicated account manager',
-          'Custom integration',
-          '24/7 premium support',
-        ],
-      },
-    ],
   },
   'voice-ops-agent': {
     name: 'Voice Ops Agent',
@@ -155,40 +124,27 @@ const products = {
       'Gain valuable insights from call analytics and customer interactions',
       'Scale customer support operations without proportional cost increases',
     ],
-    pricing: [
-      {
-        name: 'Starter',
-        price: '$499',
-        period: 'per month',
-        features: [
-          'Up to 1,000 minutes per month',
-          'Basic call analytics',
-          'Email support',
-          'Standard voice quality',
-        ],
-      },
-      {
-        name: 'Business',
-        price: '$1,299',
-        period: 'per month',
-        features: [
-          'Up to 10,000 minutes per month',
-          'Advanced call analytics',
-          'Priority support',
-          'Premium voice quality',
-        ],
-      },
-      {
-        name: 'Enterprise',
-        price: 'Custom',
-        period: '',
-        features: [
-          'Unlimited minutes',
-          'Dedicated account manager',
-          'Custom integration',
-          '24/7 premium support',
-        ],
-      },
+  },
+  ecomAssistant: {
+    name: 'RAG Bot',
+    title: 'AI-Powered Knowledge Retrieval',
+    description:
+      'Our RAG Bot provides accurate and context-aware answers by retrieving information from your knowledge base in real-time. Improve customer support and internal knowledge sharing with AI that understands your data.',
+    icon: Database,
+    color: 'emerald-500',
+    features: [
+      'Real-time knowledge retrieval from multiple sources',
+      'Context-aware responses with natural language understanding',
+      'Seamless integration with existing knowledge base systems',
+      'Customizable knowledge base indexing and management',
+      'Analytics dashboard to track query performance and knowledge gaps',
+    ],
+    benefits: [
+      'Improve customer support efficiency with instant answers',
+      'Reduce response time and increase customer satisfaction',
+      'Enhance internal knowledge sharing and collaboration',
+      'Gain valuable insights from query analytics',
+      'Scale knowledge management without proportional cost increases',
     ],
   },
 };
@@ -204,6 +160,8 @@ export default function ProductPage() {
   };
   const router = useRouter();
   const product = products[router.query.name as keyof typeof products];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   if (!product) {
     return;
@@ -222,7 +180,7 @@ export default function ProductPage() {
             <div>
               {product.name === 'askii' && (
                 <Image
-                  src={smileTile}
+                  src={smileTile || '/placeholder.svg'}
                   alt='askii'
                   width={150}
                   height={150}
@@ -242,7 +200,7 @@ export default function ProductPage() {
               </h2>
               <p className='mb-8 text-xl text-white'>{product.description}</p>
               <div className='flex flex-col gap-4 sm:flex-row'>
-                <Button className='border-none bg-green-600 p-4'>
+                <Button demo className='border-none bg-green-600 p-4'>
                   Request Demo
                 </Button>
               </div>
@@ -258,47 +216,56 @@ export default function ProductPage() {
                     />
                     <span className='font-medium'>{product.name}</span>
                   </div>
-                  <div className='space-y-4 p-6'>
-                    <div className='rounded-lg bg-gray-800 p-4'>
-                      <p className='text-sm text-white'>User Query:</p>
-                      <p className='font-medium'>
-                        "Are these trays dishwasher safe?"
-                      </p>
-                    </div>
-                    <div
-                      className={`bg-${product.color}/10 rounded-lg border p-4 border-${product.color}/20`}
+
+                  {/* Video Player */}
+                  <div className='relative aspect-video'>
+                    <video
+                      ref={videoRef}
+                      className='h-full w-full object-cover'
+                      autoPlay
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                      onEnded={() => setIsPlaying(false)}
                     >
-                      <p className='text-sm text-white'>Askii Response:</p>
-                      <p className='font-medium'>
-                        "The serving trays are crafted from eco-friendly
-                        materials like bamboo, rice husk, and coffee husk.
-                        However, they are not dishwasher safe. We recommend hand
-                        washing with mild soap and water to maintain their
-                        quality and extend their lifespan."
-                      </p>
-                    </div>
-                    <div className='rounded-lg bg-gray-800 p-4'>
-                      <p className='text-sm text-white'>User Query:</p>
-                      <p className='font-medium'>
-                        "Can the trays be used for both hot and cold items?"
-                      </p>
-                    </div>
-                    <div
-                      className={`bg-${product.color}/10 rounded-lg border p-4 border-${product.color}/20`}
-                    >
-                      <p className='text-sm text-white'>Askii Response:</p>
-                      <p className='font-medium'>
-                        "Yes, our eco-friendly serving trays can be used for
-                        both hot and cold items. They're designed to withstand
-                        temperatures up to 220°F, making them suitable for
-                        serving a variety of dishes while maintaining their
-                        structural integrity. They're also microwave-safe for
-                        quick reheating."
-                      </p>
-                    </div>
+                      <source src={ulaiDemo} type='video/mp4' />
+                      Your browser does not support the video tag.
+                    </video>
+
+                    {!isPlaying && (
+                      <div className='absolute inset-0 flex items-center justify-center bg-black/50'>
+                        <button
+                          className='flex h-16 w-16 items-center justify-center rounded-full bg-white text-gray-900 transition duration-200 hover:bg-gray-200'
+                          onClick={() => videoRef.current?.play()}
+                        >
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='0 0 24 24'
+                            fill='currentColor'
+                            className='h-8 w-8'
+                          >
+                            <path
+                              fillRule='evenodd'
+                              d='M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z'
+                              clipRule='evenodd'
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className='p-6'>
+                    <h3 className='mb-3 text-lg font-medium'>
+                      Askii in Action
+                    </h3>
+                    <p className='text-sm text-gray-400'>
+                      Watch how Askii helps customers find exactly what they're
+                      looking for with natural language understanding and
+                      personalized recommendations.
+                    </p>
                   </div>
                 </div>
-              )}{' '}
+              )}
               {router.query.name === 'whatsapp-agent' && (
                 <div className='relative overflow-hidden rounded-xl border border-gray-800'>
                   {/* Background Image */}
@@ -308,7 +275,7 @@ export default function ProductPage() {
                     <span className='flex flex-row items-center font-medium'>
                       {product.name} by{'  '}
                       <Image
-                        src={ulaiLogo}
+                        src={ulaiLogo || '/placeholder.svg'}
                         alt='image '
                         width={40}
                         height={40}
@@ -319,7 +286,7 @@ export default function ProductPage() {
                   <div>
                     <div className='-z-1 absolute inset-0'>
                       <Image
-                        src={whatsappBackground}
+                        src={whatsappBackground || '/placeholder.svg'}
                         alt='whatsapp'
                         layout='fill'
                         objectFit='cover'
@@ -407,7 +374,7 @@ export default function ProductPage() {
                         <div className='rounded-lg bg-gray-800 p-3'>
                           <div className='mb-2 aspect-square rounded bg-gray-700 '>
                             <Image
-                              src={leatherCaseProduct}
+                              src={leatherCaseProduct || '/placeholder.svg'}
                               alt='leather case'
                               width={150}
                               height={150}
@@ -423,7 +390,7 @@ export default function ProductPage() {
                         <div className='rounded-lg bg-gray-800 p-3'>
                           <div className='mb-2 aspect-square rounded bg-gray-700'>
                             <Image
-                              src={ruggedCaseProduct}
+                              src={ruggedCaseProduct || '/placeholder.svg'}
                               alt='leather case'
                               width={150}
                               height={150}
@@ -539,6 +506,170 @@ export default function ProductPage() {
                         <span className='text-sm text-gray-400'>
                           AI Voice Assistant Active
                         </span>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              )}
+              {router.query.name === 'ecomAssistant' && (
+                <div className='relative overflow-hidden rounded-xl border border-gray-800 bg-gray-900'>
+                  <div className='relative z-10 flex items-center gap-2 border-b border-gray-800 bg-gray-800 p-4'>
+                    <IconComponent className='h-5 w-5 text-emerald-500' />
+                    <span className='flex flex-row items-center font-medium'>
+                      {product.name} by{'  '}
+                      <Image
+                        src={ulaiLogo || '/placeholder.svg'}
+                        alt='image'
+                        width={40}
+                        height={40}
+                        className='my-auto ml-2'
+                      />
+                    </span>
+                  </div>
+
+                  {/* Video Player */}
+                  <div className='relative aspect-video'>
+                    <video
+                      ref={videoRef}
+                      className='h-full w-full object-cover'
+                      poster='/placeholder.svg?height=720&width=1280'
+                      controls
+                      onPlay={() => setIsPlaying(true)}
+                      onPause={() => setIsPlaying(false)}
+                      onEnded={() => setIsPlaying(false)}
+                    >
+                      <source src={ulaiDemo} type='video/mp4' />
+                      Your browser does not support the video tag.
+                    </video>
+                    {!isPlaying && (
+                      <div className='absolute inset-0 flex items-center justify-center bg-black/50'>
+                        <button
+                          className='flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500 hover:bg-emerald-600'
+                          onClick={() => {
+                            if (videoRef.current) {
+                              videoRef.current.play();
+                              setIsPlaying(true);
+                            }
+                          }}
+                        >
+                          <svg
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='0 0 24 24'
+                            fill='currentColor'
+                            className='h-8 w-8'
+                          >
+                            <path
+                              fillRule='evenodd'
+                              d='M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z'
+                              clipRule='evenodd'
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* RAG Bot Demo */}
+                  <div className='relative z-10 space-y-4 p-6'>
+                    {/* User Query 1 */}
+                    <motion.div
+                      className='flex justify-end gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={0}
+                    >
+                      <div className='max-w-[80%] rounded-lg border border-emerald-600 bg-emerald-600/20 p-3'>
+                        <p className='text-sm'>
+                          What's the return policy for your premium
+                          subscription?
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Bot Response 1 */}
+                    <motion.div
+                      className='flex gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={1}
+                    >
+                      <div className='flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500/20'>
+                        <Database className='h-4 w-4 text-emerald-400' />
+                      </div>
+                      <div className='max-w-[80%] rounded-lg bg-gray-800 p-3'>
+                        <p className='text-sm'>
+                          According to our Terms of Service, we offer a 30-day
+                          money-back guarantee for all premium subscriptions. If
+                          you're not satisfied with our service, you can request
+                          a full refund within 30 days of your initial purchase.
+                          To request a refund, please contact our support team
+                          at support@ragbot.com or through the help center in
+                          your account dashboard.
+                        </p>
+                        <div className='mt-2 flex items-center gap-1 text-xs text-emerald-400'>
+                          <Database className='h-3 w-3' />
+                          <span>
+                            Source: Terms of Service, last updated March 2025
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* User Query 2 */}
+                    <motion.div
+                      className='flex justify-end gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={2}
+                    >
+                      <div className='max-w-[80%] rounded-lg border border-emerald-600 bg-emerald-600/20 p-3'>
+                        <p className='text-sm'>
+                          Can I integrate RAG Bot with my existing knowledge
+                          base?
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    {/* Bot Response 2 */}
+                    <motion.div
+                      className='flex gap-3'
+                      variants={messageVariants}
+                      initial='hidden'
+                      animate='visible'
+                      custom={3}
+                    >
+                      <div className='flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500/20'>
+                        <Database className='h-4 w-4 text-emerald-400' />
+                      </div>
+                      <div className='max-w-[80%] rounded-lg bg-gray-800 p-3'>
+                        <p className='text-sm'>
+                          Yes, RAG Bot is designed to seamlessly integrate with
+                          your existing knowledge base systems. We support
+                          multiple integration methods:
+                        </p>
+                        <ul className='mt-2 list-disc space-y-1 pl-5 text-sm'>
+                          <li>
+                            Direct API connections to platforms like Shopify,
+                            BigCommerce and Standalone Web Applications
+                          </li>
+                          <li>
+                            File uploads for PDF, DOCX, and HTML documents
+                          </li>
+                          <li>Web crawling for public-facing documentation</li>
+                          <li>
+                            Database connections via our secure connectors
+                          </li>
+                        </ul>
+                        <div className='mt-2 flex items-center gap-1 text-xs text-emerald-400'>
+                          <Database className='h-3 w-3' />
+                          <span>
+                            Source: Integration Documentation, updated February
+                            2025
+                          </span>
+                        </div>
                       </div>
                     </motion.div>
                   </div>

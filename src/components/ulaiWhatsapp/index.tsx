@@ -6,7 +6,7 @@ import ulaiWhatsapp from '@/assets/whatsappChatInsight.png';
 
 export default function UlaiWhatsapp() {
   return (
-    <div className='flex w-full flex-row p-20'>
+    <div className='flex w-full flex-row p-20' id='whatsapp'>
       <div className='1 flex w-2/3 flex-col py-10'>
         <h1>Interactive Whatsapp Marketing</h1>
         <h5 className='w-2/3 py-5 text-lg'>

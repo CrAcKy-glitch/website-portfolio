@@ -14,7 +14,7 @@ import { CardNative } from '@/components/common/card';
 
 export default function UlaiAfterSales() {
   return (
-    <div className='min-h-screen  text-white'>
+    <div className='min-h-screen text-white' id='aftersales'>
       {/* Header */}
 
       {/* Main Content */}
@@ -49,7 +49,7 @@ export default function UlaiAfterSales() {
                   description='Track & manage order history within a unified chat window.'
                 />
               </div>
-              <Button className='mt-8 bg-green-600 '>
+              <Button demo className='mt-8 border-green-600 bg-green-500 p-3 '>
                 Learn More <ChevronRight className='ml-2 h-4 w-4' />
               </Button>
             </div>

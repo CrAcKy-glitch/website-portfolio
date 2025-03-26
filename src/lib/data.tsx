@@ -19,7 +19,7 @@ export const companyData = [
     name: 'Aabo',
     description: 'Aabo',
     logo: aabo,
-    website: 'https://wadhwani.com',
+    website: 'https://aabo.com',
   },
   {
     name: 'Adukale',
@@ -49,7 +49,7 @@ export const companyData = [
     name: 'Sugandhlok',
     description: 'SugandhLok',
     logo: sugandhloklogo,
-    website: 'https://ecobhoo.com',
+    website: 'https://sugandhklok.com',
   },
 ];
 

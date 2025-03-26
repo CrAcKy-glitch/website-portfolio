@@ -16,11 +16,12 @@ export default function UlaiWhy() {
       <div className='flex justify-center gap-4'>
         <Button
           variant='outline'
-          className='border-gray-900 bg-green-600 px-6 py-3 text-white'
+          login
+          className='border-gray-900 bg-green-600 px-6 py-3 text-white hover:bg-green-600'
         >
           Start Free Trial
         </Button>
-        <Button className='bg-[#915EFF] px-6 py-3 text-white'>
+        <Button demo className='bg-transparent px-6 py-3 text-white outline'>
           Get A Demo
         </Button>
       </div>

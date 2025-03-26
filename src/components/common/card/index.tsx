@@ -39,20 +39,24 @@ export const WobbleCard = ({
   children,
   containerClassName,
   className,
+  disableWobble,
 }: {
   children: React.ReactNode;
   containerClassName?: string;
   className?: string;
+  disableWobble?: boolean;
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
     const { clientX, clientY } = event;
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = (clientX - (rect.left + rect.width / 2)) / 20;
-    const y = (clientY - (rect.top + rect.height / 2)) / 20;
-    setMousePosition({ x, y });
+    if (!disableWobble) {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = (clientX - (rect.left + rect.width / 2)) / 20;
+      const y = (clientY - (rect.top + rect.height / 2)) / 20;
+      setMousePosition({ x, y });
+    }
   };
   return (
     <motion.section

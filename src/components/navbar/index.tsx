@@ -118,17 +118,21 @@ export const ProductItem = ({
 
 export const HoveredLink = ({ children, ...rest }: any) => {
   return (
-    <Link {...rest} className=' text-neutral-200 hover:text-black '>
+    <Link {...rest} className=' text-neutral-200 hover:text-green-600'>
       {children}
     </Link>
   );
 };
 
 export default function NavBar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
-  const [mobileActive, setMobileActive] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const toggleDropdown = (item: string) => {
+    setActiveDropdown(activeDropdown === item ? null : item);
+  };
   // Add scroll event listener to track scroll position
   useEffect(() => {
     const handleScroll = () => {
@@ -190,12 +194,19 @@ export default function NavBar() {
                   item='Solutions'
                 >
                   <div className='flex flex-col space-y-4 text-sm'>
-                    <HoveredLink href='/web-dev'>Whatsapp</HoveredLink>
-                    <HoveredLink href='/interface-design'>
-                      Integration
+                    <HoveredLink href='#stats'>Statistics</HoveredLink>
+                    <HoveredLink href='#discovery'>RAG bot</HoveredLink>
+                    <HoveredLink href='#postsales'>
+                      Post Sales Support
                     </HoveredLink>
-                    <HoveredLink href='/seo'>Solutions</HoveredLink>
-                    <HoveredLink href='/branding'>Instagram</HoveredLink>
+                    <HoveredLink href='#voice'>Voice Agent</HoveredLink>
+                    <HoveredLink href='/branding'>
+                      Growth Oriented Dashboard
+                    </HoveredLink>
+                    <HoveredLink href='#campaigns'>
+                      Automated Campaigns
+                    </HoveredLink>
+                    <HoveredLink href='#partners'>Our Clients</HoveredLink>
                   </div>
                 </MenuItem>
               </Link>
@@ -270,75 +281,62 @@ export default function NavBar() {
       </div>
 
       {/* Mobile menu, show/hide based on menu state */}
-      <div
-        className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} ${
-          isScrolled ? 'bg-black/95' : 'bg-black/90'
-        }`}
-        id='mobile-menu'
-      >
-        <div className='space-y-1 px-2 pb-3 pt-2'>
-          <Link
-            href='#'
-            className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-          >
+      {isMenuOpen && (
+        <div className='bg-black/90 p-4 md:hidden'>
+          <Link href='#' className='block py-2 text-white'>
             Solutions
           </Link>
-          <Link
-            href='#'
-            className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-          >
-            <MenuItem
-              mobile
-              setActive={setMobileActive}
-              active={mobileActive}
-              item='Products'
+
+          {/* Products Dropdown */}
+          <div>
+            <button
+              onClick={() => toggleDropdown('products')}
+              className='block w-full py-2 text-left text-white'
             >
-              <div className='grid grid-cols-2 gap-10 p-4 text-sm'>
+              Products
+            </button>
+            {activeDropdown === 'products' && (
+              <div className='space-y-4 px-2'>
                 <ProductItem
                   mobile
                   title='AsKii'
                   href='/product/askii'
-                  src='https://assets.aceternity.com/demos/algochurn.webp'
+                  src={askii}
                   description='Your website product personalization'
                 />
                 <ProductItem
                   mobile
                   title='Voice Sales Agent'
                   href='/product/voice-ops-agent'
-                  src='https://assets.aceternity.com/demos/tailwindmasterkit.webp'
-                  description='Talks to your consumers and markets your product'
+                  src={voice}
+                  description='Talks to your consumers'
                 />
                 <ProductItem
                   mobile
                   title='E-Commerce AI Assistant'
                   href='/product/ecomAssistant'
-                  src='https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png'
-                  description='Never write from scratch again. Go from idea to blog in minutes.'
+                  src={ulai}
+                  description='Never write from scratch again'
                 />
                 <ProductItem
                   mobile
                   title='WhatsApp Shopping'
                   href='/product/whatsapp-agent'
-                  src='https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png'
-                  description='Respond to government RFPs, RFIs and RFQs 10x faster using AI'
+                  src={whatsapp}
+                  description='Respond to RFQs 10x faster'
                 />
               </div>
-            </MenuItem>
-          </Link>
-          <Link
-            href='#'
-            className='block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-          >
+            )}
+          </div>
+
+          <Link href='/contact' className='block py-2 text-white'>
             Contact
           </Link>
-          <button className='mt-2 w-full rounded-md bg-blue-500 px-3 py-2 text-center text-base font-medium text-white hover:bg-blue-600'>
+          <Button className='w-full bg-blue-500 hover:bg-blue-600'>
             Try for Free
-          </button>
-          <button className='mt-2 w-full rounded-md border-2 border-[#64ffda] px-3 py-2 text-center text-base font-medium text-white hover:bg-[#64ffda] hover:text-[#0a192f]'>
-            Login
-          </button>
+          </Button>
         </div>
-      </div>
+      )}
     </nav>
   );
 }

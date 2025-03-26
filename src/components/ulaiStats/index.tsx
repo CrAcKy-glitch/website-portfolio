@@ -16,8 +16,8 @@ export function UlaiStats() {
     {
       quote:
         'We can be way more creative in what we’re putting out into the world.',
-      author: 'Shantala',
-      role: 'CoFounder',
+      author: 'Debu Dutta',
+      role: 'Director Business',
       company: 'Gamatics India',
       color: 'bg-gray-700',
     },
@@ -56,7 +56,7 @@ export function UlaiStats() {
   ];
 
   return (
-    <div className='mt-32'>
+    <div className='mt-32' id='stats'>
       <div className='mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 lg:grid-cols-3'>
         <WobbleCard
           containerClassName='col-span-1 lg:col-span-2 h-full border-gray-800 bg-gray-900 min-h-[500px] lg:min-h-[300px]'
@@ -117,7 +117,7 @@ export function UlaiStats() {
           />
         </WobbleCard>
       </div>
-      <section className='w-full  py-24 text-white'>
+      <section className='w-full  py-24 text-white' id='stories'>
         <div className='container mx-auto px-4'>
           <div className='flex w-full flex-col items-center justify-between md:flex-row'>
             <div className='mb-12'>
@@ -128,8 +128,8 @@ export function UlaiStats() {
                 Real Marketers, Surreal Results
               </h2>
               <p className='mb-8 max-w-2xl text-lg text-gray-400'>
-                Our Customer testimonials benefitting from cutting edge tech
-                designed to upscale your buisness.
+                Testimonial from our Customers benefitting from cutting edge
+                tech designed to upscale your buisness.
               </p>
 
               {/* Stats Row */}
@@ -152,7 +152,10 @@ export function UlaiStats() {
                 </div>
               </div>
 
-              <Button className='mb-12 rounded-lg bg-green-500  px-6 py-3 font-medium text-white '>
+              <Button
+                href='/testimonials'
+                className='mb-12 rounded-lg border-green-600 bg-green-500  px-6 py-3 font-medium text-white '
+              >
                 Explore Customer Stories
               </Button>
             </div>

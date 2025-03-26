@@ -8,7 +8,10 @@ import calendarTile from '@/assets/images/calendar.svg';
 
 export default function UlaiCampaign() {
   return (
-    <section className='mx-auto flex flex-col px-4 py-8 text-white md:flex-row md:space-x-20'>
+    <section
+      className='mx-auto flex flex-col px-4 py-8 text-white md:flex-row md:space-x-20'
+      id='campaign'
+    >
       <div className='flex w-full flex-col px-4 md:w-1/2'>
         <div className='mb-12 max-w-4xl text-left'>
           <h2 className='mb-3 text-3xl font-bold md:text-5xl'>
@@ -35,11 +38,11 @@ export default function UlaiCampaign() {
       </div>
 
       {/* Right Section */}
-      <div className='flex w-full flex-col space-y-4 md:w-1/3'>
+      <div className='mt-5 flex w-full flex-col space-y-4 md:mt-0 md:w-1/3'>
         <FeatureCard
           icon={<Zap className='h-6 w-6 text-green-400' />}
-          title='AI-Driven Campaigns'
-          description='Create & schedule AI-driven marketing campaigns that learn and adapt to customer behaviors.'
+          title='Fast Campaigns'
+          description='Create & schedule marketing campaigns at lightning speed that learn and adapt to customer behaviors.'
         />
         <FeatureCard
           icon={<Calendar className='h-6 w-6 text-green-400' />}
@@ -48,8 +51,8 @@ export default function UlaiCampaign() {
         />
         <FeatureCard
           icon={<MessageSquare className='h-6 w-6 text-green-400' />}
-          title='Omni-Channel Support'
-          description='Reach customers seamlessly across WhatsApp, Web, and Social platforms with unified messaging.'
+          title='Social Support'
+          description='Reach customers seamlessly across WhatsApp, Web, with unified messaging.'
         />
 
         <div className='relative pt-4'>

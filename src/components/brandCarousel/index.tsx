@@ -5,7 +5,7 @@ import { companyData } from '@/lib/data';
 
 export default function BrandCarousel() {
   return (
-    <div className='relative mt-20 w-full overflow-hidden'>
+    <div className='relative mt-20 w-full overflow-hidden' id='partners'>
       <h3 className='mb-6 text-center text-5xl'>Trusted by Growing Brands</h3>
       <div className='flex justify-center'>
         <div className='w-3/4 overflow-hidden'>
@@ -13,7 +13,7 @@ export default function BrandCarousel() {
             {[...companyData, ...companyData].map((company, index) => (
               <div
                 key={index}
-                className=' flex h-[200px] w-[220px] items-center justify-center rounded-lg bg-gray-800 p-4 hover:-translate-y-3 hover:transform'
+                className=' flex h-[200px] w-[220px] items-center justify-center rounded-lg bg-gray-800 p-4  hover:transform'
               >
                 <Link href={company.website} target='_blank'>
                   <Image

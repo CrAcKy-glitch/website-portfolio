@@ -18,7 +18,7 @@ export default function UlaiDiscovery() {
 
   const messages = [
     {
-      sender: 'bot',
+      sender: '',
       text: 'Welcome! What kind of running shoes are you looking for today?',
     },
     {
@@ -26,7 +26,7 @@ export default function UlaiDiscovery() {
       text: 'I need comfortable shoes for long-distance running',
     },
     {
-      sender: 'bot',
+      sender: '',
       text: 'Great! Based on your needs, here are some options with extra cushioning for long-distance running:',
     },
   ];
@@ -38,7 +38,7 @@ export default function UlaiDiscovery() {
   ];
 
   return (
-    <main className=' min-h-screen  text-white'>
+    <main className=' min-h-screen  text-white' id='discovery'>
       <section className='container mx-auto px-4 py-20'>
         {/* Section Header */}
         <div className='flex flex-row justify-between'>
